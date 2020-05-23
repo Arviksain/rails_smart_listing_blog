@@ -1,0 +1,18 @@
+<h1>Blog Posts</h1>
+<div class="postlist">
+  <% unless smart_listing.empty? %>
+  <div class="panel-group" id="accordion">
+      <% smart_listing.collection.each do |post| %>
+  <div class="well">
+      <h3><%= post.title %></h3>
+      <p><%= post.body %></p>
+      <%= link_to "Read More", post_path(post), :class => 'btn btn-default' %>
+  </div>
+  <% end %>
+  </div>
+    <%= smart_listing.paginate %>
+    <%= smart_listing.pagination_per_page_links %>
+    <% else %>
+      <p class="alert alert-info">No records!</p>
+    <% end %>
+</div>
